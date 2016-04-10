@@ -1,0 +1,13 @@
+---
+- name: cron setting
+  cron: >
+    name={{ item.name }}
+    job={{ item.job }}
+    user={{ item.user |default('root') }}
+    minute={{ item.minute|default('*') }}
+    hour={{ item.hour|default('*') }}
+    day={{ item.day|default('*') }}
+    month={{ item.month|default('*') }}
+    weekday={{ item.weekday|default('*') }}
+    state={{ item.state|default('present') }}
+  with_items: "{{ cron }}"
